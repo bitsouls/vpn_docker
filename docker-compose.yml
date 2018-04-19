@@ -1,16 +1,12 @@
 version: '2'
-
 services:
-  vpn:
-    image: hwdsl2/ipsec-vpn-server
-    restart: always
-    env_file:
-      - ./vpn.env
+  openvpn:
+    cap_add:
+     - NET_ADMIN
+    image: kylemanna/openvpn
+    container_name: openvpn
     ports:
-      - "500:500/udp"
-      - "4500:4500/udp"
-    privileged: true
-    hostname: ipsec-vpn-server
-    container_name: ipsec-vpn-server
+     - "1194:1194/udp"
+    restart: always
     volumes:
-      - /lib/modules:/lib/modules:ro
+     - ./openvpn-data/conf:/etc/openvpn
