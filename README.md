@@ -2,7 +2,7 @@
 
 ## Setting up an ipv6 capable Amazon instance
 1. Obtain an Amazon account.
-2. Go to Services > VPC. Select the default VPC there. Actions > Edit CIDRs. Add IPV6 CIDR (leave blank for Amazon to
+2. Select the preferred region where you want your VPN server to reside. EU-Central (Frankfurt) for example. Go to Services >      VPC. Select the default VPC there. Actions > Edit CIDRs. Add IPV6 CIDR (leave blank for Amazon to
    auto-assign an IPV6 CIDR).
 3. Go back to VPC main page. Select Subnets. There should be 3 default subnets. Select the first subnet.
    Subnet Actions > Edit IPV6 CIDRs. Leave the automatically suggested CIDR there and apply it.
