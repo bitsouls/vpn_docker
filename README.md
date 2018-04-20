@@ -13,12 +13,14 @@
    as target. Hit Save.
 5. Navigate to Security Groups. Hit Create Security Group. Give it some name and description. Select your new Security Group 
    and open the Inbound Rules tab. Hit Edit. You should add the following rules:
+   ```
        Custom UDP Rule  -  UDP (17)  -  1194  -  0.0.0.0/0
        Custom UDP Rule  -  UDP (17)  -  1194  -  ::/0
        SSH (22)  -  TCP (6)  -  22  -  0.0.0.0/0
        SSH (22)  -  TCP (6)  -  22  -  ::/0
        Custom TCP Rule  -  TCP (6)  -  1194  -  0.0.0.0/0
        Custom TCP Rule  -  TCP (6)  -  1194  -  ::/0
+   ```
    Hit Save.
 6. Go to Services > EC2. Launch Instance. Select the Ubuntu 16 image. Select t2.micro and hit next. Select one of your subnets
    and ensure Auto-assign IPv6 IP is enabled (it should be by default which we've set up previously), hit Next. Skip the next
