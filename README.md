@@ -49,6 +49,10 @@
    sudo apt-get update
     
    sudo apt-get install docker-ce
+    
+   sudo groupadd docker
+    
+   sudo usermod -aG docker $USER
    ```
    ```
    sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) \
@@ -56,6 +60,7 @@
     
    sudo chmod +x /usr/local/bin/docker-compose
    ```
+   Now relogin before proceeding.
 ### Enabling ipv6 support for docker and OpenVPN
 1. Run the following commands:
    ```
@@ -91,12 +96,15 @@
 4. Run the following commands:
    ```
    sudo chown -R $(whoami): ./openvpn-data
+    
    docker-compose up -d openvpn
    ```
 5. Generate client configs with
    ```
    export CLIENTNAME="your_client_name"
+    
    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME (with passphrase key protection)
+    
    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME nopass (without passphrase key protection)
    ```
    This should generate a file that will have your client name and "ovpn" extension, which you can use to connect to
@@ -105,9 +113,9 @@
    cat $CLIENTNAME.ovpn
    ```
 ## What's next ?
-Now you should install and run an OpenVPN client for your specific OS and connect to it using the client config file
-we made in the previous section.
-A few notes re client configs:
+Now you should install and run an OpenVPN client for your specific OS and connect it to your server using the client
+config file we made in the previous section.
+A few notes regarding client configs:
 1. If you used the passphrase protection and can't input the passpharase upon connecting to your OpenVPN server
    (your client runs on your WiFi router for example) you should add the following line into your client config:
    ```
