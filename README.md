@@ -106,6 +106,8 @@
    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME (with passphrase key protection)
     
    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME nopass (without passphrase key protection)
+    
+   docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
    ```
    This should generate a file that will have your client name and "ovpn" extension, which you can use to connect to
    your OpenVPN server. View the contents of that file with
